@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Mono Display et Red Hat Display imports from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -42,6 +45,8 @@
 }
 
 :root {
+  --font-title: 'Mono Display', monospace;
+  --font-sans: "Red Hat Display", sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -108,6 +113,29 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Titles */
+h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+h2 {
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+h3 {
+  font-family: var(--font-title);
+  font-weight: 500;
+}
+h4 {
+  font-family: var(--font-title);
+  font-weight: 500;
+}
+/* Paragraphs and body */
+p, body, span, div {
+  font-family: var(--font-sans);
+  font-weight: 400;
 }
 
 @layer base {
