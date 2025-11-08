@@ -3,6 +3,10 @@
     "welcomeMessage": "Bienvenue dans notre application !",
     "description": "Ceci est la version française de l'application."
   },
+  "mainNav": {
+    "login": "Connexion",
+    "signUp": "S'inscrire"
+  },
   "login": {
     "title": "Connexion à votre compte",
     "email": "Email",

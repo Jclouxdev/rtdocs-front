@@ -3,6 +3,10 @@
     "welcomeMessage": "Welcome to our application!",
     "description": "This is the English version of the app."
   },
+  "mainNav": {
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
   "login": {
     "title": "Login to Your Account",
     "email": "Email",

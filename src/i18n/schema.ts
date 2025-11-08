@@ -7,6 +7,10 @@ export const translationSchema = z.object({
     welcomeMessage: z.string(),
     description: z.string()
   }),
+  mainNav: z.object({
+    login: z.string(),
+    signUp: z.string(),
+  }),
   login: z.object({
     title: z.string(),
     email: z.string(),
