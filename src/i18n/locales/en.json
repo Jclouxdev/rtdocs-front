@@ -1,0 +1,14 @@
+{
+  "welcome": "Welcome to our application!",
+  "description": "This is the English version of the app.",
+  "mainNav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "system": "System Default"
+  }
+}
