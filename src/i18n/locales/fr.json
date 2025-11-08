@@ -1,14 +1,20 @@
 {
-  "welcome": "Bienvenue dans notre application !",
-  "description": "Ceci est la version française de l'application.",
-  "mainNav": {
-    "home": "Accueil",
-    "about": "À propos",
-    "contact": "Contact"
+  "homepage" : {
+    "welcomeMessage": "Bienvenue dans notre application !",
+    "description": "Ceci est la version française de l'application."
+  },
+  "login": {
+    "title": "Connexion à votre compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "submit": "Se connecter"
   },
   "theme": {
-    "light": "Mode Clair",
-    "dark": "Mode Sombre",
-    "system": "Par Défaut du Système"
+    "light": "Mode clair",
+    "dark": "Mode sombre",
+    "system": "Par défaut du système"
+  },
+  "language": {
+    "changed": "Langue changée pour {{language}}"
   }
 }

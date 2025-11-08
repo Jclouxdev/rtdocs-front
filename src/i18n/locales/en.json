@@ -1,14 +1,20 @@
 {
-  "welcome": "Welcome to our application!",
-  "description": "This is the English version of the app.",
-  "mainNav": {
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact"
+  "homepage" : {
+    "welcomeMessage": "Welcome to our application!",
+    "description": "This is the English version of the app."
+  },
+  "login": {
+    "title": "Login to Your Account",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log In"
   },
   "theme": {
-    "light": "Light Mode",
-    "dark": "Dark Mode",
-    "system": "System Default"
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System default"
+  },
+  "language": {
+    "changed": "Language changed to {{language}}"
   }
 }
