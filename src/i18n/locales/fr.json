@@ -16,5 +16,10 @@
   },
   "language": {
     "changed": "Langue changée pour {{language}}"
+  },
+  "notFound": {
+    "title": "404 - Page non trouvée",
+    "message": "Désolé, la page que vous recherchez n'existe pas.",
+    "homeLink": "Retour à l'accueil"
   }
 }

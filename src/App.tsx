@@ -1,9 +1,10 @@
-import { useEffect, type ReactNode } from "react"
+import { useEffect } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import { MainNav } from "./components/nav/MainNav"
 import { useTranslation } from "react-i18next"
+import { Outlet } from "react-router"
 
-function App({ children }: { children?: ReactNode }) {
+function App() {
   const { i18n } = useTranslation()
 
   useEffect(() => {
@@ -13,7 +14,7 @@ function App({ children }: { children?: ReactNode }) {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <MainNav />
-      {children}
+      <Outlet />
     </ThemeProvider>
   )
 }

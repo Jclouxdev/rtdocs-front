@@ -1,8 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 export const Home = () => {
+  const { t } = useTranslation()
+
   return (
     <div className="p-10">
-      <h1 className="text-4xl">Welcome to the Home Page</h1>
-      <p>This is the main landing page of the application.</p>
+      <h1 className="text-4xl">{t("homepage.welcomeMessage")}</h1>
+      <p>{t("homepage.description")}</p>
     </div>
   );
 };

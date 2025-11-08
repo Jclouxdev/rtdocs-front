@@ -20,6 +20,11 @@ export const translationSchema = z.object({
   }),
   language: z.object({
     changed: z.string()
+  }),
+  notFound: z.object({
+    title: z.string(),
+    message: z.string(),
+    homeLink: z.string()
   })
 })
 
