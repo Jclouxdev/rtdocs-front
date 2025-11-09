@@ -11,7 +11,14 @@
     "title": "Connexion à votre compte",
     "email": "Email",
     "password": "Mot de passe",
-    "submit": "Se connecter"
+    "submit": "Se connecter",
+    "unauthorizedMessage": "Identifiants incorrects, veuillez réessayer.",
+    "footerNote": "Vous n'avez pas de compte ?",
+    "footerNoteLink": "Inscrivez-vous ici."
+  },
+  "o2auth": {
+    "github": "Continuer avec GitHub",
+    "google": "Continuer avec Google"
   },
   "theme": {
     "light": "Mode clair",

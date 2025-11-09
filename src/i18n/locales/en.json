@@ -11,7 +11,14 @@
     "title": "Login to Your Account",
     "email": "Email",
     "password": "Password",
-    "submit": "Log In"
+    "submit": "Log In",
+    "unauthorizedMessage": "Incorrect credentials, please try again.",
+    "footerNote": "Don't have an account?",
+    "footerNoteLink": "Sign up here."
+  },
+  "o2auth": {
+    "github": "Continue with GitHub",
+    "google": "Continue with Google"
   },
   "theme": {
     "light": "Light mode",

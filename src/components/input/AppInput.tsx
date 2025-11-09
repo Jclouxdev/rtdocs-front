@@ -15,7 +15,7 @@ export const AppInput = ({placeholder, inputName, inputLabel, inputValidationRul
   return (
     <div>
       <p>{inputLabel}</p>
-      <Input placeholder={placeholder} name={inputName} type={type} />
+      <Input placeholder={placeholder} name={inputName} type={type} className="bg-white placeholder:text-gray-400" />
       {inputValidationRules && <InputValidators validators={inputValidationRules} />}
     </div>
   )

@@ -15,7 +15,14 @@ export const translationSchema = z.object({
     title: z.string(),
     email: z.string(),
     password: z.string(),
-    submit: z.string()
+    submit: z.string(),
+    unauthorizedMessage: z.string(),
+    footerNote: z.string().optional(),
+    footerNoteLink: z.string().optional()
+  }),
+  o2auth: z.object({
+    github: z.string(),
+    google: z.string()
   }),
   theme: z.object({
     light: z.string(),
