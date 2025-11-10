@@ -7,14 +7,12 @@ export type AppInputProps = {
   placeholder?: string,
   type: InputType,
   inputName: string,
-  inputLabel?: string,
   inputValidationRules?: InputValidator[]
 }
 
-export const AppInput = ({placeholder, inputName, inputLabel, inputValidationRules, type}:AppInputProps) => {
+export const AppInput = ({placeholder, inputName, inputValidationRules, type}:AppInputProps) => {
   return (
     <div>
-      <p>{inputLabel}</p>
       <Input placeholder={placeholder} name={inputName} type={type} className="bg-white placeholder:text-gray-400" />
       {inputValidationRules && <InputValidators validators={inputValidationRules} />}
     </div>

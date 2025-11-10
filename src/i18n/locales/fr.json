@@ -10,8 +10,18 @@
   "login": {
     "title": "Connexion à votre compte",
     "email": "Email",
+    "emailInputsErrors": {
+      "required": "L'email est requis.",
+      "invalid": "Veuillez entrer une adresse email valide.",
+      "tooLong": "L'email doit contenir au maximum {{max}} caractères."
+    },
     "password": "Mot de passe",
-    "submit": "Se connecter",
+    "passwordInputsErrors": {
+      "required": "Le mot de passe est requis.",
+      "tooLong": "Le mot de passe doit contenir au maximum {{max}} caractères."
+    },
+    "submitButton": "Se connecter",
+    "successfulLoginMessage": "Connecté avec succès en tant que {{email}}",
     "unauthorizedMessage": "Identifiants incorrects, veuillez réessayer.",
     "footerNote": "Vous n'avez pas de compte ?",
     "footerNoteLink": "Inscrivez-vous ici."

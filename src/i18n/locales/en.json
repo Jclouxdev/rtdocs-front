@@ -10,8 +10,18 @@
   "login": {
     "title": "Login to Your Account",
     "email": "Email",
+    "emailInputsErrors": {
+      "required": "Email is required.",
+      "invalid": "Please enter a valid email address.",
+      "tooLong": "Email must be at most {{max}} characters long."
+    },
     "password": "Password",
-    "submit": "Log In",
+    "passwordInputsErrors": {
+      "required": "Password is required.",
+      "tooLong": "Password must be at most {{max}} characters long."
+    },
+    "submitButton": "Log In",
+    "successfulLoginMessage": "Successfully logged in as {{email}}",
     "unauthorizedMessage": "Incorrect credentials, please try again.",
     "footerNote": "Don't have an account?",
     "footerNoteLink": "Sign up here."

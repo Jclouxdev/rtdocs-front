@@ -14,8 +14,18 @@ export const translationSchema = z.object({
   login: z.object({
     title: z.string(),
     email: z.string(),
+    emailInputsErrors: z.object({
+      required: z.string(),
+      invalid: z.string(),
+      tooLong: z.string()
+    }),
     password: z.string(),
-    submit: z.string(),
+    passwordInputsErrors: z.object({
+      required: z.string(),
+      tooLong: z.string()
+    }),
+    submitButton: z.string(),
+    successfulLoginMessage: z.string(),
     unauthorizedMessage: z.string(),
     footerNote: z.string().optional(),
     footerNoteLink: z.string().optional()
