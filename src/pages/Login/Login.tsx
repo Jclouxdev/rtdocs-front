@@ -5,14 +5,19 @@ import { NavLink } from "react-router";
 
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import z from "zod";
 
 export const Login = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
-    const loginFormSchema = z.object({
+  const loginFormSchema = z.object({
     email: z
       .email({ error: t("login.emailInputsErrors.invalid") })
       .min(1, t("login.emailInputsErrors.required"))
@@ -26,47 +31,50 @@ export const Login = () => {
   const form = useForm({
     defaultValues: {
       email: "",
-      password: ""
+      password: "",
     },
     validators: {
-      onSubmit: loginFormSchema
+      onSubmit: loginFormSchema,
     },
     onSubmit: async ({ value }) => {
-      toast.success(t("login.successfulLoginMessage", { email: value.email}), {
+      toast.success(t("login.successfulLoginMessage", { email: value.email }), {
         classNames: {
           icon: "text-green-600 dark:text-green-400",
-          content: "text-green-600 dark:text-green-400"
-        }
+          content: "text-green-600 dark:text-green-400",
+        },
       });
-    }
-  })
+    },
+  });
 
   return (
-  <div className="flex flex-col justify-center items-center gap-6">
-    <h1 className="text-3xl mt-8">{t("login.title")}</h1>
-    <form
-      id="login-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        form.handleSubmit();
-      }}
-      className="w-[320px]"
-    >
-      <O2auth />
+    <div className="flex flex-col justify-center items-center gap-6">
+      <h1 className="text-3xl mt-8">{t("login.title")}</h1>
+      <form
+        id="login-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          form.handleSubmit();
+        }}
+        className="w-[320px]"
+      >
+        <O2auth />
 
-      <hr className="my-6"></hr>
+        <hr className="my-6"></hr>
 
-      <FieldGroup>
-        <form.Field 
-          name="email"
-          children={(field) => {
-            const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
-            return (
-              <Field data-invalid={isInvalid}>
-                <FieldLabel htmlFor={field.name} className="-mb-2">{t("login.email")}</FieldLabel>
-                  <Input 
+        <FieldGroup>
+          <form.Field
+            name="email"
+            children={(field) => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name} className="-mb-2">
+                    {t("login.email")}
+                  </FieldLabel>
+                  <Input
                     id={field.name}
-                    name={field.name} 
+                    name={field.name}
                     value={field.state.value}
                     type="email"
                     onBlur={field.handleBlur}
@@ -76,21 +84,22 @@ export const Login = () => {
                     autoComplete="off"
                     className="bg-white"
                   />
-                  {isInvalid && (
-                    <FieldError errors={field.state.meta.errors} />
-                  )}
-              </Field>
-            )
-          }}
-        />
-        <form.Field 
-          name="password"
-          children={(field) => {
-            const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
-            return (
-              <Field data-invalid={isInvalid}>
-                <FieldLabel htmlFor={field.name} className="-mb-2">{t("login.password")}</FieldLabel>
-                  <Input 
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          />
+          <form.Field
+            name="password"
+            children={(field) => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name} className="-mb-2">
+                    {t("login.password")}
+                  </FieldLabel>
+                  <Input
                     id={field.name}
                     name={field.name}
                     type="password"
@@ -102,24 +111,33 @@ export const Login = () => {
                     autoComplete="off"
                     className="bg-white"
                   />
-                  {isInvalid && (
-                    <FieldError errors={field.state.meta.errors} />
-                  )}
-              </Field>
-            )
-          }}
-        />
-      </FieldGroup>
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          />
+        </FieldGroup>
 
-      <Button className="mt-8 w-full font-bold" type="submit" form="login-form">{t("login.submitButton")}</Button>
+        <Button
+          className="mt-8 w-full font-bold"
+          type="submit"
+          form="login-form"
+        >
+          {t("login.submitButton")}
+        </Button>
 
-      <hr className="my-6"></hr>
+        <hr className="my-6"></hr>
 
-      <div className="flex flex-col items-center justify-center text-sm">
-        <p>{t("login.footerNote")}</p>
-        <NavLink className="text-blue-700 dark:text-blue-500 font-bold" to="/signup">{t("login.footerNoteLink")}</NavLink>
-      </div>
-    </form>
-  </div>
+        <div className="flex flex-col items-center justify-center text-sm">
+          <p>{t("login.footerNote")}</p>
+          <NavLink
+            className="text-blue-700 dark:text-blue-500 font-bold"
+            to="/signup"
+          >
+            {t("login.footerNoteLink")}
+          </NavLink>
+        </div>
+      </form>
+    </div>
   );
 };

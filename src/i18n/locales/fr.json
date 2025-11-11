@@ -26,6 +26,43 @@
     "footerNote": "Vous n'avez pas de compte ?",
     "footerNoteLink": "Inscrivez-vous ici."
   },
+  "signup": {
+    "title": "Créer votre compte",
+    "emailLabel": "Email",
+    "usernameLabel": "Nom d'utilisateur",
+    "passwordLabel": "Mot de passe",
+    "passwordRules": {
+      "minLength": "Au moins {{min}} caractères",
+      "uppercase": "Au moins une lettre majuscule",
+      "symbol": "Au moins un symbole spécial (ex : !@#$%)"
+    },
+    "confirmPasswordLabel": "Confirmer le mot de passe",
+    "emailInputsErrors": {
+      "required": "L'email est requis.",
+      "invalid": "Veuillez entrer une adresse email valide.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "usernameInputsErrors": {
+      "required": "Le nom d'utilisateur est requis.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "passwordInputsErrors": {
+      "required": "Le mot de passe est requis.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "confirmPasswordInputsErrors": {
+      "required": "La confirmation du mot de passe est requise.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères.",
+      "noMatch": "Les mots de passe ne correspondent pas."
+    },
+    "submitButton": "S'inscrire",
+    "successfulSignupMessage": "Compte créé avec succès pour {{email}}",
+    "footerNote": "Vous avez déjà un compte ?",
+    "footerNoteLink": "Connectez-vous ici."
+  },
   "o2auth": {
     "github": "Continuer avec GitHub",
     "google": "Continuer avec Google"

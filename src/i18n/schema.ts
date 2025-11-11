@@ -30,6 +30,43 @@ export const translationSchema = z.object({
     footerNote: z.string().optional(),
     footerNoteLink: z.string().optional()
   }),
+  signup: z.object({
+    title: z.string(),
+    emailLabel: z.string(),
+    usernameLabel: z.string(),
+    passwordLabel: z.string(),
+    passwordRules: z.object({
+      minLength: z.string(),
+      uppercase: z.string(),
+      symbol: z.string()
+    }),
+    confirmPasswordLabel: z.string(),
+    emailInputsErrors: z.object({
+      required: z.string(),
+      invalid: z.string(),
+      tooLong: z.string()
+    }),
+    usernameInputsErrors: z.object({
+      required: z.string(),
+      tooShort: z.string(),
+      tooLong: z.string()
+    }),
+    passwordInputsErrors: z.object({
+      required: z.string(),
+      tooShort: z.string(),
+      tooLong: z.string()
+    }),
+    confirmPasswordInputsErrors: z.object({
+      required: z.string(),
+      tooShort: z.string(),
+      tooLong: z.string(),
+      noMatch: z.string()
+    }),
+    submitButton: z.string(),
+    successfulSignupMessage: z.string(),
+    footerNote: z.string().optional(),
+    footerNoteLink: z.string().optional()
+  }),
   o2auth: z.object({
     github: z.string(),
     google: z.string()
