@@ -50,7 +50,7 @@ export const Editor = () => {
         </button>
       </div>
       <textarea 
-        className="w-full h-[400px] mt-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md" 
+        className="w-full h-[400px] mt-1 p-2 border border-gray-300 dark:border-[#373737] dark:bg-[#151515] rounded-md" 
         placeholder="Start editing..."
         onChange={(e) => handleDocumentChange(e)}
         value={document}
