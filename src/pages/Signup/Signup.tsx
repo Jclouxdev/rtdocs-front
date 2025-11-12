@@ -8,12 +8,15 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useForm } from "@tanstack/react-form";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { toast } from "sonner";
 import z from "zod";
-import { Check, Ellipsis } from "lucide-react";
+import { Ban, Check, Ellipsis } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { AuthEndpoints } from "@/utils/endpoints";
+import { useAuth } from "@/hooks/useAuth";
 
 type PasswordRules = {
   ruleName: string;
@@ -24,6 +27,52 @@ type PasswordRules = {
 export const Signup = () => {
   const { t } = useTranslation();
   const [passwordRules, setPasswordRules] = useState<PasswordRules[]>([]);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/editor");
+    }
+  }, [isAuthenticated, navigate]);
+
+  const signupMutation = useMutation({
+    mutationFn: async (values: {
+      email: string;
+      username: string;
+      password: string;
+    }) => {
+      const response = await fetch(AuthEndpoints.SIGNUP, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Signup failed");
+      }
+
+      return await response.json();
+    },
+    onSuccess: (variables) => {
+      toast.success(
+        t("signup.successfulSignupMessage", { email: variables.email }),
+        {
+          classNames: {
+            icon: "text-green-600 dark:text-green-400",
+            content: "text-green-600 dark:text-green-400",
+          },
+        }
+      );
+      navigate("/login");
+    },
+    onError: () => {
+      setError(t("signup.unableToCreateAccountMessage"));
+    },
+  });
 
   useMemo(() => {
     setPasswordRules([
@@ -61,48 +110,54 @@ export const Signup = () => {
       }
     });
     setPasswordRules(updatedRules);
-  }
+  };
 
-  const signupFormSchema = z.object({
-    email: z
-      .email({ error: t("signup.emailInputsErrors.invalid") })
-      .min(1, t("signup.emailInputsErrors.required"))
-      .max(100, t("signup.emailInputsErrors.tooLong", { max: 100 })),
-    username: z
-      .string({ error: t("signup.usernameInputsErrors.required") })
-      .min(3, { error: t("signup.usernameInputsErrors.tooShort", { min: 3 }) })
-      .max(30, {
-        error: t("signup.usernameInputsErrors.tooLong", { max: 30 }),
-      }),
-    password: z
-      .string({ error: t("signup.passwordInputsErrors.required") })
-      .min(8, { error: t("signup.passwordInputsErrors.tooShort", { min: 8 }) })
-      .max(100, {
-        error: t("signup.passwordInputsErrors.tooLong", { max: 100 }),
-      })
-      .refine((value) => /[A-Z]/.test(value), {
-        message: t("signup.passwordRules.uppercase"),
-      })
-      .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
-        message: t("signup.passwordRules.symbol"),
-      }),
-    confirmPassword: z
-      .string({ error: t("signup.confirmPasswordInputsErrors.required") })
-      .min(8, {
-        error: t("signup.confirmPasswordInputsErrors.tooShort", { min: 8 }),
-      })
-      .max(100, {
-        error: t("signup.confirmPasswordInputsErrors.tooLong", { max: 100 }),
-      }),
-  }).superRefine(({ password, confirmPassword }, ctx) => {
-    if (password !== confirmPassword) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: t("signup.confirmPasswordInputsErrors.noMatch"),
-        path: ["confirmPassword"],
-      });
-    }
-  });
+  const signupFormSchema = z
+    .object({
+      email: z
+        .email({ error: t("signup.emailInputsErrors.invalid") })
+        .min(1, t("signup.emailInputsErrors.required"))
+        .max(100, t("signup.emailInputsErrors.tooLong", { max: 100 })),
+      username: z
+        .string({ error: t("signup.usernameInputsErrors.required") })
+        .min(3, {
+          error: t("signup.usernameInputsErrors.tooShort", { min: 3 }),
+        })
+        .max(30, {
+          error: t("signup.usernameInputsErrors.tooLong", { max: 30 }),
+        }),
+      password: z
+        .string({ error: t("signup.passwordInputsErrors.required") })
+        .min(8, {
+          error: t("signup.passwordInputsErrors.tooShort", { min: 8 }),
+        })
+        .max(100, {
+          error: t("signup.passwordInputsErrors.tooLong", { max: 100 }),
+        })
+        .refine((value) => /[A-Z]/.test(value), {
+          message: t("signup.passwordRules.uppercase"),
+        })
+        .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
+          message: t("signup.passwordRules.symbol"),
+        }),
+      confirmPassword: z
+        .string({ error: t("signup.confirmPasswordInputsErrors.required") })
+        .min(8, {
+          error: t("signup.confirmPasswordInputsErrors.tooShort", { min: 8 }),
+        })
+        .max(100, {
+          error: t("signup.confirmPasswordInputsErrors.tooLong", { max: 100 }),
+        }),
+    })
+    .superRefine(({ password, confirmPassword }, ctx) => {
+      if (password !== confirmPassword) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: t("signup.confirmPasswordInputsErrors.noMatch"),
+          path: ["confirmPassword"],
+        });
+      }
+    });
 
   const form = useForm({
     defaultValues: {
@@ -115,21 +170,21 @@ export const Signup = () => {
       onSubmit: signupFormSchema,
     },
     onSubmit: async ({ value }) => {
-      toast.success(
-        t("signup.successfulSignupMessage", { email: value.email }),
-        {
-          classNames: {
-            icon: "text-green-600 dark:text-green-400",
-            content: "text-green-600 dark:text-green-400",
-          },
-        }
-      );
+      signupMutation.mutate(value);
     },
   });
 
   return (
     <div className="flex flex-col justify-center items-center gap-6">
       <h1 className="text-3xl mt-8">{t("signup.title")}</h1>
+
+      {error && (
+        <div className="flex items-center gap-2 mb-4 px-4 py-2 text-red-600 dark:text-red-400 bg-red-100 dark:bg-[#170101] border border-red-600 dark:border-red-400 rounded-md text-sm">
+          <Ban />
+          <strong>{error}</strong>
+        </div>
+      )}
+
       <div className="flex">
         <div className="flex flex-col border-r px-5 gap-4 w-[360px]">
           <form
@@ -217,8 +272,8 @@ export const Signup = () => {
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => {
-                          field.handleChange(e.target.value)
-                          validatePasswordRules(e.target.value)
+                          field.handleChange(e.target.value);
+                          validatePasswordRules(e.target.value);
                         }}
                         aria-invalid={isInvalid}
                         placeholder={"••••••••••••••••••"}
@@ -230,7 +285,9 @@ export const Signup = () => {
                           <li
                             key={rule.ruleName}
                             className={`text-sm ${
-                              rule.isValid ? "text-green-600 font-bold" : "text-gray-400"
+                              rule.isValid
+                                ? "text-green-600 font-bold"
+                                : "text-gray-400"
                             }`}
                           >
                             {rule.isValid ? (

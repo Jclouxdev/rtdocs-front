@@ -1,7 +1,8 @@
 {
   "homepage" : {
     "welcomeMessage": "Bienvenue dans notre application !",
-    "description": "Ceci est la version française de l'application."
+    "description": "Ceci est la version française de l'application.",
+    "getStartedButton": "Commencer"
   },
   "mainNav": {
     "login": "Connexion",
@@ -60,12 +61,22 @@
     },
     "submitButton": "S'inscrire",
     "successfulSignupMessage": "Compte créé avec succès pour {{email}}",
+    "unableToCreateAccountMessage": "Impossible de créer le compte, veuillez réessayer plus tard.",
     "footerNote": "Vous avez déjà un compte ?",
     "footerNoteLink": "Connectez-vous ici."
+  },
+  "editor": {
+    "title": "Éditeur de texte",
+    "actions": {
+      "erase": "Effacer le contenu"
+    }
   },
   "o2auth": {
     "github": "Continuer avec GitHub",
     "google": "Continuer avec Google"
+  },
+  "beta": {
+    "warningMessage": "Vous utilisez une version bêta de l'application. Certaines fonctionnalités peuvent ne pas fonctionner comme prévu."
   },
   "theme": {
     "light": "Mode clair",

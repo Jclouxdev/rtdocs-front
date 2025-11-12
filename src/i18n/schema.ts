@@ -5,7 +5,8 @@ import z from "zod";
 export const translationSchema = z.object({
   homepage: z.object({
     welcomeMessage: z.string(),
-    description: z.string()
+    description: z.string(),
+    getStartedButton: z.string(),
   }),
   mainNav: z.object({
     login: z.string(),
@@ -64,12 +65,22 @@ export const translationSchema = z.object({
     }),
     submitButton: z.string(),
     successfulSignupMessage: z.string(),
+    unableToCreateAccountMessage: z.string(),
     footerNote: z.string().optional(),
     footerNoteLink: z.string().optional()
+  }),
+  editor: z.object({
+    title: z.string(),
+    actions: z.object({
+      erase: z.string(),
+    }),
   }),
   o2auth: z.object({
     github: z.string(),
     google: z.string()
+  }),
+  beta: z.object({
+    warningMessage: z.string(),
   }),
   theme: z.object({
     light: z.string(),

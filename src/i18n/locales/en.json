@@ -1,7 +1,8 @@
 {
   "homepage" : {
     "welcomeMessage": "Welcome to our application!",
-    "description": "This is the English version of the app."
+    "description": "This is the English version of the app.",
+    "getStartedButton": "Get Started"
   },
   "mainNav": {
     "login": "Login",
@@ -60,12 +61,22 @@
     },
     "submitButton": "Sign Up",
     "successfulSignupMessage": "Account successfully created for {{email}}",
+    "unableToCreateAccountMessage": "Unable to create account, please try again later.",
     "footerNote": "Already have an account?",
     "footerNoteLink": "Log in here."
+  },
+  "editor": {
+    "title": "Text Editor",
+    "actions": {
+      "erase": "Erase Content"
+    }
   },
   "o2auth": {
     "github": "Continue with GitHub",
     "google": "Continue with Google"
+  },
+  "beta": {
+    "warningMessage": "You are using a beta version of the application. Some features may not work as expected."
   },
   "theme": {
     "light": "Light mode",

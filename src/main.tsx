@@ -8,6 +8,7 @@ import { Home } from './pages/Home/Home'
 import { Login } from './pages/Login/Login'
 import { NotFound } from './pages/NotFound/NotFound'
 import { Signup } from './pages/Signup/Signup'
+import { Editor } from './pages/Editor/Editor'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/editor' element={<Editor />} />
 
           {/* Add a NotFound route for unmatched paths */}
           <Route path="*" element={<NotFound />} />

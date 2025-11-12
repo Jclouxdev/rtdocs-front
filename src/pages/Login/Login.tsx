@@ -1,7 +1,7 @@
 import { O2auth } from "@/components/o2auth/O2auth";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
@@ -13,9 +13,62 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import z from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { AuthEndpoints } from "@/utils/endpoints";
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect, useState } from "react";
+import { Ban } from 'lucide-react';
 
 export const Login = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { login: authLogin, isAuthenticated } = useAuth();
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/editor');
+    };
+  }, [isAuthenticated, navigate]);
+
+  const loginMutation = useMutation({
+    mutationFn: async (values: { email: string; password: string }) => {
+      const response = await fetch(AuthEndpoints.LOGIN, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+      
+      return await response.json();
+    },
+    onSuccess: (data) => {
+      const token = data.access_token;
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      
+      authLogin(token, {
+        email: payload.email,
+        username: payload.username,
+      });
+      
+      toast.success(t("login.successfulLoginMessage", { email: payload.email }), {
+        classNames: {
+          icon: "text-green-600 dark:text-green-400",
+          content: "text-green-600 dark:text-green-400",
+        },
+      });
+
+      navigate('/editor');
+    },
+    onError: () => {
+      setError(t("login.unauthorizedMessage"));
+    },
+  });
 
   const loginFormSchema = z.object({
     email: z
@@ -37,12 +90,7 @@ export const Login = () => {
       onSubmit: loginFormSchema,
     },
     onSubmit: async ({ value }) => {
-      toast.success(t("login.successfulLoginMessage", { email: value.email }), {
-        classNames: {
-          icon: "text-green-600 dark:text-green-400",
-          content: "text-green-600 dark:text-green-400",
-        },
-      });
+      loginMutation.mutate(value);
     },
   });
 
@@ -60,6 +108,13 @@ export const Login = () => {
         <O2auth />
 
         <hr className="my-6"></hr>
+
+        {error && (
+          <div className="flex items-center gap-2 mb-4 px-4 py-2 text-red-600 dark:text-red-400 bg-red-100 dark:bg-[#170101] border border-red-600 dark:border-red-400 rounded-md text-sm">
+            <Ban />
+            <strong className="max-w-40">{error}</strong>
+          </div>
+        )}
 
         <FieldGroup>
           <form.Field
