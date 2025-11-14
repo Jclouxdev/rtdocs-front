@@ -1,13 +1,82 @@
 {
   "homepage" : {
     "welcomeMessage": "Bienvenue dans notre application !",
-    "description": "Ceci est la version française de l'application."
+    "description": "Ceci est la version française de l'application.",
+    "getStartedButton": "Commencer"
+  },
+  "mainNav": {
+    "login": "Connexion",
+    "signUp": "S'inscrire"
   },
   "login": {
     "title": "Connexion à votre compte",
     "email": "Email",
+    "emailInputsErrors": {
+      "required": "L'email est requis.",
+      "invalid": "Veuillez entrer une adresse email valide.",
+      "tooLong": "L'email doit contenir au maximum {{max}} caractères."
+    },
     "password": "Mot de passe",
-    "submit": "Se connecter"
+    "passwordInputsErrors": {
+      "required": "Le mot de passe est requis.",
+      "tooLong": "Le mot de passe doit contenir au maximum {{max}} caractères."
+    },
+    "submitButton": "Se connecter",
+    "successfulLoginMessage": "Connecté avec succès en tant que {{email}}",
+    "unauthorizedMessage": "Identifiants incorrects, veuillez réessayer.",
+    "footerNote": "Vous n'avez pas de compte ?",
+    "footerNoteLink": "Inscrivez-vous ici."
+  },
+  "signup": {
+    "title": "Créer votre compte",
+    "emailLabel": "Email",
+    "usernameLabel": "Nom d'utilisateur",
+    "passwordLabel": "Mot de passe",
+    "passwordRules": {
+      "minLength": "Au moins {{min}} caractères",
+      "uppercase": "Au moins une lettre majuscule",
+      "symbol": "Au moins un symbole spécial (ex : !@#$%)"
+    },
+    "confirmPasswordLabel": "Confirmer le mot de passe",
+    "emailInputsErrors": {
+      "required": "L'email est requis.",
+      "invalid": "Veuillez entrer une adresse email valide.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "usernameInputsErrors": {
+      "required": "Le nom d'utilisateur est requis.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "passwordInputsErrors": {
+      "required": "Le mot de passe est requis.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères."
+    },
+    "confirmPasswordInputsErrors": {
+      "required": "La confirmation du mot de passe est requise.",
+      "tooShort": "Doit contenir au minimum {{min}} caractères.",
+      "tooLong": "Doit contenir au maximum {{max}} caractères.",
+      "noMatch": "Les mots de passe ne correspondent pas."
+    },
+    "submitButton": "S'inscrire",
+    "successfulSignupMessage": "Compte créé avec succès pour {{email}}",
+    "unableToCreateAccountMessage": "Impossible de créer le compte, veuillez réessayer plus tard.",
+    "footerNote": "Vous avez déjà un compte ?",
+    "footerNoteLink": "Connectez-vous ici."
+  },
+  "editor": {
+    "title": "Éditeur de texte",
+    "actions": {
+      "erase": "Effacer le contenu"
+    }
+  },
+  "o2auth": {
+    "github": "Continuer avec GitHub",
+    "google": "Continuer avec Google"
+  },
+  "beta": {
+    "warningMessage": "Vous utilisez une version bêta de l'application. Certaines fonctionnalités peuvent ne pas fonctionner comme prévu."
   },
   "theme": {
     "light": "Mode clair",

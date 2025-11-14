@@ -1,13 +1,82 @@
 {
   "homepage" : {
     "welcomeMessage": "Welcome to our application!",
-    "description": "This is the English version of the app."
+    "description": "This is the English version of the app.",
+    "getStartedButton": "Get Started"
+  },
+  "mainNav": {
+    "login": "Login",
+    "signUp": "Sign Up"
   },
   "login": {
     "title": "Login to Your Account",
     "email": "Email",
+    "emailInputsErrors": {
+      "required": "Email is required.",
+      "invalid": "Please enter a valid email address.",
+      "tooLong": "Email must be at most {{max}} characters long."
+    },
     "password": "Password",
-    "submit": "Log In"
+    "passwordInputsErrors": {
+      "required": "Password is required.",
+      "tooLong": "Password must be at most {{max}} characters long."
+    },
+    "submitButton": "Log In",
+    "successfulLoginMessage": "Successfully logged in as {{email}}",
+    "unauthorizedMessage": "Incorrect credentials, please try again.",
+    "footerNote": "Don't have an account?",
+    "footerNoteLink": "Sign up here."
+  },
+  "signup": {
+    "title": "Create Your Account",
+    "emailLabel": "Email",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "passwordRules": {
+      "minLength": "At least {{min}} characters",
+      "uppercase": "At least one uppercase letter",
+      "symbol": "At least one special symbol (e.g., !@#$%)"
+    },
+    "confirmPasswordLabel": "Confirm Password",
+    "emailInputsErrors": {
+      "required": "Email is required.",
+      "invalid": "Please enter a valid email address.",
+      "tooLong": "Must be at most {{max}} characters long."
+    },
+    "usernameInputsErrors": {
+      "required": "Username is required.",
+      "tooShort": "Must be at least {{min}} characters long.",
+      "tooLong": "Must be at most {{max}} characters long."
+    },
+    "passwordInputsErrors": {
+      "required": "Password is required.",
+      "tooShort": "Must be at least {{min}} characters long.",
+      "tooLong": "Must be at most {{max}} characters long."
+    },
+    "confirmPasswordInputsErrors": {
+      "required": "Password confirmation is required.",
+      "tooShort": "Must be at least {{min}} characters long.",
+      "tooLong": "Must be at most {{max}} characters long.",
+      "noMatch": "Passwords do not match."
+    },
+    "submitButton": "Sign Up",
+    "successfulSignupMessage": "Account successfully created for {{email}}",
+    "unableToCreateAccountMessage": "Unable to create account, please try again later.",
+    "footerNote": "Already have an account?",
+    "footerNoteLink": "Log in here."
+  },
+  "editor": {
+    "title": "Text Editor",
+    "actions": {
+      "erase": "Erase Content"
+    }
+  },
+  "o2auth": {
+    "github": "Continue with GitHub",
+    "google": "Continue with Google"
+  },
+  "beta": {
+    "warningMessage": "You are using a beta version of the application. Some features may not work as expected."
   },
   "theme": {
     "light": "Light mode",
