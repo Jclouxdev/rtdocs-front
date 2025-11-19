@@ -13,6 +13,7 @@ type AuthContextType = {
   isAuthenticated: boolean;
 }
 
+// TODO: remove eslint ignore when fixed in react-refresh
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

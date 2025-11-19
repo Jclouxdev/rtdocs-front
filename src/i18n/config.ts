@@ -43,7 +43,6 @@ i18n
     interpolation: {
       escapeValue: false
     },
-    // Persist language preference in localStorage
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage']
